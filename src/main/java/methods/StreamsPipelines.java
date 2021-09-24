@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class StreamsPipelines {
 
@@ -20,9 +21,13 @@ public class StreamsPipelines {
         return list.stream().filter(el -> el % 2 != 0).reduce(Integer::sum).orElse(0);
     }
 
-    public static Map<Integer, Integer> sumByReminder(List<Integer> list, Integer divisor) {
+/*    public static Map<Integer, Integer> sumByReminder(List<Integer> list, Integer divisor) {
         return list.stream()
                 .collect(Collectors.groupingBy(el -> el % divisor, Collectors.summingInt(elFromGroup -> elFromGroup)));
+    }*/
+
+    public static Map<Integer, Integer> sumByReminder(int i, IntStream limit) {
+        return limit.boxed().collect(Collectors.groupingBy(el -> el % i, Collectors.summingInt(elFromGroup -> elFromGroup)));
     }
 
     class Person {
