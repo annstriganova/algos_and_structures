@@ -9,14 +9,25 @@ public class BinarySearch {
         int l = 0;
         int r = array.length - 1;
         while (l <= r) {
-            int m = (l + r) / 2;
-            int mEl = array[m];
-            if (key == mEl) return m;
-            if (mEl < key) {
-                l = m + 1;
+            int m = l + (r - l) / 2;
+            int middle = array[m];
+            if (key == middle) {
+                // check duplicates (not efficient solution)
+                int i = m + 1;
+                while (i < array.length) {
+                    int el = array[i];
+                    if (key == el) {
+                        i++;
+                    } else {
+                        break;
+                    }
+                }
+                return i - 1;
             }
-            if (key < mEl) {
-                r = m;
+            if (key < middle) {
+                r = m - 1;
+            } else {
+                l = m + 1;
             }
         }
         return -1;
