@@ -1,6 +1,5 @@
 package methods;
 
-import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SortUtils {
@@ -30,10 +29,23 @@ public class SortUtils {
         return j;
     }
 
-    public static int kOrder(ArrayList<Integer> arr, int l, int r, int k) {
-        if (r >= l) return arr.get(l);
-        int rndIndex = ThreadLocalRandom.current().nextInt(l, r + 1);
-        int randElem = arr.get(rndIndex);
-        return 0;
+    /**
+     * https://stepik.org/lesson/13250/step/2?unit=3435
+     */
+    public static int randomSelect(int[] unsortedArr, int l, int r, int k) {
+        if (l == r) return unsortedArr[l == unsortedArr.length ? l - 1 : l];
+        int rndIndex = ThreadLocalRandom.current().nextInt(l, r);
+        int pivot = unsortedArr[rndIndex];
+        unsortedArr[rndIndex] = unsortedArr[l];
+        unsortedArr[l] = pivot;
+        int m = partition(unsortedArr, l, r);
+        if (m == (k - 1)) {
+            return unsortedArr[m];
+        }
+        if ((k - 1) < m) {
+            return randomSelect(unsortedArr, l, m - 1, k);
+        } else {
+            return randomSelect(unsortedArr, m + 1, r, k);
+        }
     }
 }

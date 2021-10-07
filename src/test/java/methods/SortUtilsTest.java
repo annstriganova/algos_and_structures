@@ -41,4 +41,52 @@ class SortUtilsTest {
         assertEquals(1, actual);
         assertEquals("[2, 3]", listToString());
     }
+
+    @Test
+    public void randomSelectTest1() {
+        // even length
+        arr = new int[]{3, 2, 4, 1, 5};
+        assertEquals(1, SortUtils.randomSelect(arr.clone(), 0, arr.length, 1));
+        assertEquals(2, SortUtils.randomSelect(arr.clone(), 0, arr.length, 2));
+        assertEquals(3, SortUtils.randomSelect(arr.clone(), 0, arr.length, 3));
+        assertEquals(4, SortUtils.randomSelect(arr.clone(), 0, arr.length, 4));
+        assertEquals(5, SortUtils.randomSelect(arr.clone(), 0, arr.length, 5));
+        assertEquals(5, SortUtils.randomSelect(arr.clone(), 0, arr.length, 6));
+    }
+
+    @Test
+    public void randomSelectTest2() {
+        // odd length
+        arr = new int[]{3, 2, 4, 1};
+        assertEquals(1, SortUtils.randomSelect(arr.clone(), 0, arr.length, 1));
+        assertEquals(2, SortUtils.randomSelect(arr.clone(), 0, arr.length, 2));
+        assertEquals(3, SortUtils.randomSelect(arr.clone(), 0, arr.length, 3));
+        assertEquals(4, SortUtils.randomSelect(arr.clone(), 0, arr.length, 4));
+        assertEquals(4, SortUtils.randomSelect(arr.clone(), 0, arr.length, 5));
+        assertEquals(4, SortUtils.randomSelect(arr.clone(), 0, arr.length, 6));
+    }
+
+    @Test
+    public void randomSelectTest3() {
+        // sorted
+        arr = new int[]{1, 2, 3, 4};
+        assertEquals(1, SortUtils.randomSelect(arr.clone(), 0, arr.length, 1));
+        assertEquals(2, SortUtils.randomSelect(arr.clone(), 0, arr.length, 2));
+        assertEquals(3, SortUtils.randomSelect(arr.clone(), 0, arr.length, 3));
+        assertEquals(4, SortUtils.randomSelect(arr.clone(), 0, arr.length, 4));
+        assertEquals(4, SortUtils.randomSelect(arr.clone(), 0, arr.length, 5));
+        assertEquals(4, SortUtils.randomSelect(arr.clone(), 0, arr.length, 6));
+    }
+
+    @Test
+    public void randomSelectTest4() {
+        // duplicates
+        arr = new int[]{1, 2, 3, 3, 4};
+        assertEquals(1, SortUtils.randomSelect(arr.clone(), 0, arr.length, 1));
+        assertEquals(2, SortUtils.randomSelect(arr.clone(), 0, arr.length, 2));
+        assertEquals(3, SortUtils.randomSelect(arr.clone(), 0, arr.length, 3));
+        assertEquals(3, SortUtils.randomSelect(arr.clone(), 0, arr.length, 4));
+        assertEquals(4, SortUtils.randomSelect(arr.clone(), 0, arr.length, 5));
+        assertEquals(4, SortUtils.randomSelect(arr.clone(), 0, arr.length, 6));
+    }
 }
