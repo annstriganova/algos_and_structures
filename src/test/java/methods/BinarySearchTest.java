@@ -31,6 +31,7 @@ class BinarySearchTest {
         // duplicates, return the most right
         int[] dupls = {1, 5, 8, 8, 8, 12, 13};
         assertEquals(4, BinarySearch.find(dupls, 8));
+        assertEquals(4, BinarySearch.findRightMost(dupls, 8));
     }
 
     @Test

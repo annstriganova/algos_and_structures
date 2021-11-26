@@ -5,6 +5,7 @@ import java.util.stream.IntStream;
 
 public class BinarySearch {
 
+    // right-most
     public static int find(int[] array, int key) {
         int l = 0;
         int r = array.length - 1;
@@ -31,6 +32,22 @@ public class BinarySearch {
             }
         }
         return -1;
+    }
+
+    // right-most
+    public static int findRightMost(int[] array, int key) {
+        int l = 0;
+        int r = array.length;
+        while (l < r) {
+            int m = l + (r - l) / 2;
+            int middle = array[m];
+            if (key < middle) {
+                r = m;
+            } else {
+                l = m + 1;
+            }
+        }
+        return r - 1;
     }
 
     public static void main(String[] args) {
