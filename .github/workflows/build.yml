@@ -6,12 +6,13 @@ on:
 
 name: Main Workflow
 jobs:
-  build:
-    name: Build Job
+  sonarqube:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
+        with:
+          # Disabling shallow clone is recommended for improving relevancy of reporting.
+          fetch-depth: 0
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
@@ -30,15 +31,6 @@ jobs:
 
       - name: Build with Maven
         run: mvn -B package -DskipTests --file pom.xml
-
-  sonarqube:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          # Disabling shallow clone is recommended for improving relevancy of reporting.
-          fetch-depth: 0
 
       # Triggering SonarQube analysis as results of it are required by Quality Gate check.
       - name: SonarQube Scan
