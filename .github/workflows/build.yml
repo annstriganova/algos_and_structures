@@ -32,6 +32,7 @@ jobs:
         run: mvn -B package -DskipTests --file pom.xml
 
   sonarqube:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
