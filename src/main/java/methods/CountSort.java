@@ -43,4 +43,6 @@ public class CountSort {
         CountSort cs = new CountSort(arr);
         IntStream.of(cs.sort()).forEach(el -> System.out.print(el + " "));
     }
+
+    public void ewMethod(){}
 }
