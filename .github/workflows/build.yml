@@ -3,7 +3,7 @@ on:
   # a pull request. 
   push:
     branches:
-      - master
+      - master, test
   pull_request:
     types: [opened]
 name: Main Workflow
