@@ -70,4 +70,6 @@ public class BinarySearch {
         System.out.println(String.join(" ", results));
 
     }
+
+    public void ewMethod2() {}
 }
